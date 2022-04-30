@@ -67,26 +67,26 @@ void solve()
 {
     ll n;
     cin >> n;
+    ll m;
+    cin >> m;
     vector<ll> v(n);
-    for (ll i = 0; i < n; i++)
-    {
+    for (ll i = 0; i < n; i++){
         cin >> v[i];
     }
-    unordered_map<int, int> ump;
-    for (int i = 0; i < v.size(); i++)
-    {
-        ump[v[i]]++;
+    if (m == 0 || n == 0)
+        return 0;
+    sort(v, v + n);
+    if (n < m)
+        return -1;
+
+    ll min_diff = INT_MAX;
+
+    for (ll i = 0; i + m - 1 < n; i++){
+        ll diff = v[i + m - 1] - v[i];
+        if (diff < min_diff)
+            min_diff = diff;
     }
-    for (auto i : ump)
-    {
-        if (i.second > 1)
-        {
-            cout << i.first << endl;
-            return true;
-            break;
-        }
-    }
-    return false;
+    cout << min_diff << endl;
 }
 
 int main()
