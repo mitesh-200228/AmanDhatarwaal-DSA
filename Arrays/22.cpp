@@ -55,33 +55,10 @@ void print(vector<ll> v,ll n){
  
 void solve(){
     ll n;cin>>n;
-    std::vector<ll> arr(n);
-
+    vector<ll> v(n);
     for(ll i=0;i<n;i++){
-        cin>>arr[i];
-        prefix[i] += arr[n-i-1];
-        suffix[i] += arr[i]; 
+        cin>>v[i];
     }
-    ll i = 0;
-    ll j = n - 1;
-    ll ans = 0;
-    while(i<=j){
-        if(arr[i] == arr[j]){
-            i++;
-            j--;
-        }
-        else if(arr[i]>arr[j]){
-            j--;
-            ans++;
-            arr[j] = arr[j] + arr[j-1];
-        }
-        else if(arr[i]<arr[j]){
-            i++;
-            ans++;
-            arr[i] = arr[i] + arr[i+1];
-        }
-    }
-    cout<<ans<<endl;
 }
  
 int main()

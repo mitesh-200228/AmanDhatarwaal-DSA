@@ -61,11 +61,18 @@ void solve(){
             cin>>v[i][j];
         }
     }
-    sort(v.begin(),v.end());
-    for(ll i=0;i<n-1;i++){
-        if(v[i][1]>v[i+1][0]){
-            
+    std::sort(v.begin(),v.end());
+    ll idx = 0;
+    for(ll i=1;i<n;i++){
+        if(v[idx][1]>=v[i][0]){
+            v[idx][1] = max(v[idx][1],v[i][1]);
+        }else{
+            idx++;
+            v[idx] = v[i];
         }
+    }
+    for(ll i=0;i<=idx;i++){
+        cout<<v[i][0]<<" "<<v[i][1]<<endl;
     }
 }
  
