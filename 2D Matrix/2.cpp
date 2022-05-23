@@ -47,16 +47,60 @@ ll gcd(ll a, string b){
     return __gcd(a,res);
 }
  
-void print(vector<ll> v,ll n){
+void print(std::vector<ll> v,ll n){
     for(ll i=0;i<n;i++){
         cout<<v[i]<<' ';
     }cout<<endl;
 }
- 
+
+void SetMAtrixZeros(std::vector<std::vector<ll>> v,ll n,ll m){
+    std::unordered_map<ll,ll> ump1;
+    std::unordered_map<ll,ll> ump2;
+
+    for(ll i=0;i<n;i++){
+        for(ll j=0;j<m;j++){
+            if(!v[i][j]){
+                ump1[i]++;
+                ump2[j]++;
+            }   
+        }   
+    }
+
+    for(auto it:ump1){
+        if(it.second > 0){
+            for(ll i=0;i<n;i++){
+                v[it.first][i] = 0;
+            }
+        }
+    }
+
+    for(auto it:ump2){
+        if(it.second > 0){
+            for(ll i=0;i<m;i++){
+                v[i][it.first] = 0;
+            }
+        }
+    }
+
+    for(ll i=0;i<n;i++){
+        for(ll j=0;j<m;j++){
+            cout<<v[i][j]<<" ";   
+        }   cout<<endl;
+    }
+}
+
 void solve(){
-    string s;cin>>s;
-    ll k;cin>>k;
-    
+    ll n;
+    cin >> n;
+    ll m;
+    cin >> m;
+    std::vector<std::vector<ll>> v(n, std::vector<ll>(m, 0));
+    for (ll i = 0; i < n; i++){
+        for (ll j = 0; j < m; j++){
+            cin >> v[i][j];
+        }
+    }
+    SetMAtrixZeros(v,n,m);
 }
  
 int main()

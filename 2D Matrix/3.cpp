@@ -54,9 +54,11 @@ void print(vector<ll> v,ll n){
 }
  
 void solve(){
-    string s;cin>>s;
-    ll k;cin>>k;
-    
+    ll n;cin>>n;
+    vector<ll> v(n);
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+    }
 }
  
 int main()
