@@ -55,10 +55,40 @@ void print(vector<ll> v,ll n){
  
 void solve(){
     ll n;cin>>n;
-    vector<ll> v(n);
-    for(ll i=0;i<n;i++){
-        cin>>v[i];
+    ll m;cin>>m;
+    std::vector<std::vector<ll>> v(n,std::vector<ll> (m,-1));
+    ll k = 0;
+    ll l = 0;
+    char x = 1;
+    while(k<n && l<m){
+        for(ll i=l;i<m;i++){
+            v[k][i] = x;
+        }
+        k++;
+        for(ll i=k;i<n;i++){
+            v[i][m-1] = x;
+        }   
+        m--;
+        if(k<n){
+            for(ll i=m-1;i>=l;i--){
+                v[n-1][i] = x;
+            }
+            n--;
+        }
+        if(l<m){
+            for(ll i=n-1;i>=k;i--){
+                v[i][l] = x;
+            }
+            l++;
+        }
+        x = (x == 0)? 1: 0;
     }
+    for(ll i=0;i<n;i++){
+        for(ll j=0;j<m;j++){
+            cout<<v[i][j]<<" ";   
+        }   cout<<endl;
+    }
+
 }
  
 int main()

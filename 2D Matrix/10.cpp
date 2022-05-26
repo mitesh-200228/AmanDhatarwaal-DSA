@@ -55,20 +55,9 @@ void print(vector<ll> v,ll n){
  
 void solve(){
     ll n;cin>>n;
-    ll m;cin>>m;
-    std::vector<std::vector<ll>> v(n,std::vector<ll> (m,0));
-    std::unordered_map<ll,ll> ump;
+    vector<ll> v(n);
     for(ll i=0;i<n;i++){
-        for(ll j=0;j<m;j++){
-            cin>>v[i][j];   
-            ump[v[i][j]]++;
-        }   
-    }
-    for(auto it:ump){
-        if(it.second == n){
-            cout<<it.first<<endl;
-            break;
-        }
+        cin>>v[i];
     }
 }
  
