@@ -52,50 +52,13 @@ void print(vector<ll> v,ll n){
         cout<<v[i]<<' ';
     }cout<<endl;
 }
-
-bool isSafe(ll i,ll j,ll n,ll m,vector<vector<ll>> v,vector<vector<ll>> visited){
-    if(i<n && i>=0 && j<m && j>=0 && v[i][j] && !visited[i][j]){
-        return true;
-    }
-    return false;
-}
-
-void NumberOFIlands(vector<vector<ll>> v,ll row,ll col,vector<vector<ll>> &visited,ll n,ll m){
-    ll rows[] = {-1,-1,-1,0,1,1,1,0};
-    ll cols[] = {-1,0,1,1,1,0,-1,-1};
-    visited[row][col] = 1;
-    ll k = 8;
-    for(ll i=0;i<k;i++){
-        if(isSafe(row+rows[i],col+cols[i],n,m,v,visited)){
-            NumberOFIlands(v,row+rows[i],col+cols[i],visited,n,m);
-        }
-    }
-}
-
+ 
 void solve(){
-    ll n;
-    cin >> n;
-    ll m;
-    cin >> m;
-    vector<vector<ll>> v(n, vector<ll>(m, 0));
-    vector<vector<ll>> visited(n,vector<ll> (m,0));
-    for (ll i = 0; i < n; i++)
-    {
-        for (ll j = 0; j < m; j++)
-        {
-            cin >> v[i][j];
-        }
-    }
-    ll cnt = 0;
+    ll n;cin>>n;
+    vector<ll> v(n);
     for(ll i=0;i<n;i++){
-        for(ll j=0;j<m;j++){
-            if(v[i][j] && !visited[i][j]){
-                NumberOFIlands(v,i,j,visited,n,m);
-                cnt++;
-            }   
-        }   
+        cin>>v[i];
     }
-    cout<<cnt<<endl;
 }
  
 int main()
