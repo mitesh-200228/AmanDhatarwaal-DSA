@@ -58,6 +58,7 @@ void solve(){
     ll m;cin>>m;
     std::vector<std::vector<ll>> v(n,std::vector<ll> (m,-1));
     ll k = 0;
+    ll a = n,b = m;
     ll l = 0;
     char x = 1;
     while(k<n && l<m){
@@ -83,8 +84,8 @@ void solve(){
         }
         x = (x == 0)? 1: 0;
     }
-    for(ll i=0;i<n;i++){
-        for(ll j=0;j<m;j++){
+    for(ll i=0;i<a;i++){
+        for(ll j=0;j<b;j++){
             cout<<v[i][j]<<" ";   
         }   cout<<endl;
     }
