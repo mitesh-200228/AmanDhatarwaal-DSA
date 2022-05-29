@@ -53,39 +53,27 @@ void print(vector<ll> v,ll n){
     }cout<<endl;
 }
  
-ll majority(std::vector<ll> v,ll n){
-    ll max_freq = 0;
-    ll cnt = 0;
-    for(ll i=0;i<n;i++){
-        if(v[max_freq] == v[i]){
-            cnt++;
-        }else{
-            cnt--;
-        }
-        if(!cnt){
-            max_freq = i;
-            cnt = 1;
-        }
-    }
-    return v[max_freq];
-}
-
 void solve(){
     ll n;cin>>n;
+    ll k;cin>>k;
     std::vector<ll> v(n);
     for(ll i=0;i<n;i++){
         cin>>v[i];
     }
-    //Moore's Voting Algorithm
-    ll x = majority(v,n);
-    ll xp = 0;
     for(ll i=0;i<n;i++){
-        if(v[i] == x){
-            xp++;
+        ll l=i+1;
+        ll r=n-1;
+        while(l<r){
+            if(v[i]+v[l]+v[r]==k){
+                cout<<v[i]<<" "<<v[l]<<" "<<v[r]<<endl;
+                break;
+            }else if(v[i]+v[l]+v[r]<k){
+                l++;
+            }else{
+                r--;
+            }
         }
-    }   
-    if(xp > n/2) cout<<x<<endl;
-    else cout<<"NO MAJORITY FOUND"<<endl;
+    }
 }
  
 int main()

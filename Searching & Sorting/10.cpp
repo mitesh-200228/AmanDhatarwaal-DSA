@@ -52,40 +52,45 @@ void print(vector<ll> v,ll n){
         cout<<v[i]<<' ';
     }cout<<endl;
 }
- 
-ll majority(std::vector<ll> v,ll n){
-    ll max_freq = 0;
-    ll cnt = 0;
-    for(ll i=0;i<n;i++){
-        if(v[max_freq] == v[i]){
-            cnt++;
+
+void mergeSortedArray(std::vector<ll> v1,std::vector<ll> v2,ll n,ll m){
+    ll i = 0;
+    ll j = 0;
+    while(i<n && j<m){
+        if(v1[i]<v2[j]){
+            cout<<v1[i]<<" ";
+            i++;
+        }else if(v1[i]>v2[j]){
+            cout<<v2[j]<<" ";
+            j++;
         }else{
-            cnt--;
-        }
-        if(!cnt){
-            max_freq = i;
-            cnt = 1;
+            cout<<v1[i]<<" "<<v1[i]<<" ";
+            i++;
+            j++;
         }
     }
-    return v[max_freq];
+    while(i<n){
+        cout<<v1[i]<<" ";
+        i++;
+    }
+    while (j<m){
+        cout<<v2[j]<<" ";
+        j++;
+    }
 }
 
 void solve(){
     ll n;cin>>n;
-    std::vector<ll> v(n);
+    ll m;cin>>m;
+    std::vector<ll> v1(n);
+    std::vector<ll> v2(m);
     for(ll i=0;i<n;i++){
-        cin>>v[i];
+        cin>>v1[i];
     }
-    //Moore's Voting Algorithm
-    ll x = majority(v,n);
-    ll xp = 0;
-    for(ll i=0;i<n;i++){
-        if(v[i] == x){
-            xp++;
-        }
-    }   
-    if(xp > n/2) cout<<x<<endl;
-    else cout<<"NO MAJORITY FOUND"<<endl;
+    for(ll i=0;i<m;i++){
+        cin>>v2[i];
+    }
+    mergeSortedArray(v1,v2,n,m);
 }
  
 int main()
