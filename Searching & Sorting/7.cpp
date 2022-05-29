@@ -53,25 +53,12 @@ void print(vector<ll> v,ll n){
     }cout<<endl;
 }
  
-
-
 void solve(){
     ll n;cin>>n;
-    ll k;cin>>k;
-    std::unordered_map<ll,ll> ump;
     vector<ll> v(n);
     for(ll i=0;i<n;i++){
         cin>>v[i];
-        ump[v[i]]++;
     }
-    for(ll i=0;i<n;i++){
-        if(v[i] == ump.find(k+v[i])){
-            cout<<v[i]<<" "<<k+v[i]<<endl;
-            break;
-        }
-    }   
-    //Another Solution is that we can sort array and do binary search after it, which cost you O(nlogn)
-    //and O(1) Space
 }
  
 int main()
